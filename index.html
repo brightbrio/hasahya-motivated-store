@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hasahya Motivated — Store</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3Cmask id='g'%3E%3Crect width='64' height='64' fill='%23fff'/%3E%3Cg fill='none' stroke='%23000' stroke-width='5.4' stroke-linecap='round'%3E%3Cpath d='M33 24 a11.5 11.5 0 0 1 0 16'/%3E%3Cpath d='M42.5 17.5 a20 20 0 0 1 0 29'/%3E%3C/g%3E%3Cpath d='M16 23 a2 2 0 0 1 3.2 -1.6 l9.6 9.9 a2.6 2.6 0 0 1 0 3.6 l-9.6 9.9 a2 2 0 0 1 -3.2 -1.6 Z' fill='%23000'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%23e11d2e' mask='url(%23g)'/%3E%3C/svg%3E">
+<style>
+:root {
+  color-scheme: light dark;
+  --page: #f7f7f4; --card: #ffffff; --ink: #14161c; --ink-2: #565b68;
+  --muted: #878c99; --line: #e3e3dd; --ring: rgba(16,18,24,.10);
+  --brand: #F5C518; --deep: #1B1F2A; --accent: #3DDC97;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #0e0f13; --card: #171920; --ink: #f4f5f7; --ink-2: #b9bec9;
+    --muted: #8a8f9c; --line: #262933; --ring: rgba(255,255,255,.10);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0e0f13; --card: #171920; --ink: #f4f5f7; --ink-2: #b9bec9;
+  --muted: #8a8f9c; --line: #262933; --ring: rgba(255,255,255,.10);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+header.hero { background: var(--deep); color: #fff; padding: 56px 0 44px;
+  border-bottom: 5px solid var(--brand); }
+header.hero h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 4.4vw, 2.9rem);
+  letter-spacing: -.02em; }
+header.hero p { margin: 0; color: #d5d8e0; max-width: 44em; }
+nav.top { margin-top: 22px; display: flex; gap: 14px; flex-wrap: wrap;
+  font-size: .9rem; }
+nav.top a { color: var(--brand); text-decoration: none; font-weight: 600; }
+
+h2.section { font-size: 1.15rem; margin: 46px 0 4px; letter-spacing: .01em; }
+p.section-note { margin: 0 0 20px; color: var(--muted); font-size: .9rem; }
+
+.grid { display: grid; gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); }
+.card { background: var(--card); border: 1px solid var(--ring); border-radius: 14px;
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: transform .12s ease, box-shadow .12s ease; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(0,0,0,.10); }
+.card .shot { aspect-ratio: 4/3; background: var(--deep); position: relative;
+  display: grid; place-items: center; overflow: hidden; }
+.card .shot img { width: 100%; height: 100%; object-fit: cover; }
+.card .shot .ph { color: var(--brand); font-weight: 800; font-size: 1.4rem;
+  text-align: center; padding: 20px; letter-spacing: -.01em; }
+.card .body { padding: 16px 18px 18px; display: flex; flex-direction: column;
+  gap: 8px; flex: 1; }
+.card h3 { margin: 0; font-size: 1.02rem; line-height: 1.35; }
+.card .kind { color: var(--muted); font-size: .74rem; text-transform: uppercase;
+  letter-spacing: .09em; }
+.card .blurb { color: var(--ink-2); font-size: .88rem; margin: 0; flex: 1; }
+.row { display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-top: 6px; }
+.price { font-size: 1.24rem; font-weight: 700; letter-spacing: -.01em; }
+.price small { font-weight: 500; color: var(--muted); font-size: .72rem;
+  display: block; letter-spacing: 0; }
+.btn { display: inline-block; background: var(--brand); color: #14161c;
+  padding: 9px 17px; border-radius: 9px; text-decoration: none; font-weight: 700;
+  font-size: .9rem; white-space: nowrap; }
+.btn.ghost { background: transparent; color: var(--ink-2);
+  border: 1px solid var(--line); font-weight: 600; }
+.btn.soon { background: var(--line); color: var(--muted); cursor: default; }
+
+.tiers { display: grid; gap: 14px; grid-template-columns: 1fr; margin: 18px 0; }
+@media (min-width: 720px) { .tiers { grid-template-columns: repeat(3, 1fr); } }
+.tier { border: 1px solid var(--ring); border-radius: 12px; padding: 16px 18px;
+  background: var(--card); }
+.tier.core { border-color: var(--brand); border-width: 2px; }
+.tier .name { font-size: .74rem; text-transform: uppercase;
+  letter-spacing: .09em; color: var(--muted); }
+.tier .amt { font-size: 1.5rem; font-weight: 700; margin: 4px 0 6px; }
+.tier p { margin: 0; font-size: .86rem; color: var(--ink-2); }
+
+.detail { display: grid; gap: 30px; grid-template-columns: 1fr; margin: 34px 0; }
+@media (min-width: 860px) { .detail { grid-template-columns: 1.05fr .95fr; } }
+.detail .art { border-radius: 14px; overflow: hidden; border: 1px solid var(--ring);
+  background: var(--deep); }
+.gallery { display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr);
+  margin-top: 12px; }
+.gallery img { border-radius: 8px; border: 1px solid var(--ring); }
+
+ul.plain { padding-left: 1.15em; margin: 8px 0; }
+ul.plain li { margin: 5px 0; color: var(--ink-2); font-size: .92rem; }
+.note { background: var(--card); border: 1px solid var(--ring); border-left: 4px solid var(--brand);
+  border-radius: 10px; padding: 14px 16px; margin: 20px 0; font-size: .9rem;
+  color: var(--ink-2); }
+footer { margin-top: 60px; padding: 28px 0 44px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: .84rem; }
+.themebtn { position: fixed; right: 16px; bottom: 16px; background: var(--card);
+  border: 1px solid var(--ring); border-radius: 999px; padding: 8px 14px;
+  font: inherit; font-size: .82rem; color: var(--ink-2); cursor: pointer; }
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:10px">
+    <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true" style="color:#e11d2e;flex:none"><g fill="none" stroke="currentColor" stroke-width="5.6" stroke-linecap="round"><path d="M27 21 a14 14 0 0 1 0 22"/><path d="M37 13.5 a23 23 0 0 1 0 37"/><path d="M47 6 a32 32 0 0 1 0 52"/></g><path d="M7 19 a2.3 2.3 0 0 1 3.6 -1.9 l11.5 11.9 a3 3 0 0 1 0 4.2 l-11.5 11.9 a2.3 2.3 0 0 1 -3.6 -1.9 Z" fill="currentColor"/></svg>
+    <h1 style="margin:0">Hasahya Motivated</h1>
+  </div>
+  <p>The message is hope.</p>
+  <nav class="top">
+    <a href="#products">Products</a>
+    <a href="#how">How delivery works</a>
+  </nav>
+</div></header>
+<main class="wrap">
+<h2 class="section" id="products">Everything</h2>
+<p class="section-note">14 digital · 3 printed on demand</p>
+<div class="grid">
+<article class="card">
+  <a class="shot" href="p/real-example-of-the-economics-of-business-audio-edition.html"><div class="ph">Real Example of the Economics of Business,... — Audio Edition</div></a>
+  <div class="body">
+    <div class="kind">audio pack · Business</div>
+    <h3><a href="p/real-example-of-the-economics-of-business-audio-edition.html" style="text-decoration:none">Real Example of the Economics of Business,... — Audio Edition</a></h3>
+    <p class="blurb">The narrated edition, for the commute and the gym.</p>
+    <div class="row">
+      <div class="price">$9.00
+        <small>instant download</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20Real%20Example%20of%20the%20Economics%20of%20Business%2C...%20%E2%80%94%20Audio%20Edition.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/real-example-of-the-economics-of-business-workbook.html"><div class="ph">Real Example of the Economics of Business,... Workbook</div></a>
+  <div class="body">
+    <div class="kind">workbook · Business</div>
+    <h3><a href="p/real-example-of-the-economics-of-business-workbook.html" style="text-decoration:none">Real Example of the Economics of Business,... Workbook</a></h3>
+    <p class="blurb">A printable worksheet that turns the method into something you actually do this week.</p>
+    <div class="row">
+      <div class="price">$9.99
+        <small>instant download</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20Real%20Example%20of%20the%20Economics%20of%20Business%2C...%20Workbook.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/the-real-example-of-the-economics-of-business-system-pack.html"><div class="ph">The Real Example of the Economics of Business,... System Pack</div></a>
+  <div class="body">
+    <div class="kind">template · Business</div>
+    <h3><a href="p/the-real-example-of-the-economics-of-business-system-pack.html" style="text-decoration:none">The Real Example of the Economics of Business,... System Pack</a></h3>
+    <p class="blurb">The system as a ready-made file. Import it into Sheets, Excel or Notion and start filling it in.</p>
+    <div class="row">
+      <div class="price">$24.00
+        <small>instant download</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20The%20Real%20Example%20of%20the%20Economics%20of%20Business%2C...%20System%20Pack.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/business-consulting-session.html"><div class="ph">Business Consulting Session</div></a>
+  <div class="body">
+    <div class="kind">consulting · Business</div>
+    <h3><a href="p/business-consulting-session.html" style="text-decoration:none">Business Consulting Session</a></h3>
+    <p class="blurb">One session on one specific problem, with a written summary you can act on.</p>
+    <div class="row">
+      <div class="price">$179.00
+        <small>instant download</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20Business%20Consulting%20Session.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/real-example-of-the-economics-of-business-the-complete-guide.html"><div class="ph">Real Example of the Economics of Business,...: The Complete Guide</div></a>
+  <div class="body">
+    <div class="kind">ebook · Business</div>
+    <h3><a href="p/real-example-of-the-economics-of-business-the-complete-guide.html" style="text-decoration:none">Real Example of the Economics of Business,...: The Complete Guide</a></h3>
+    <p class="blurb">The full method in one readable guide. Print it, or read it on anything. No fluff and no filler chapters.</p>
+    <div class="row">
+      <div class="price">$14.00
+        <small>instant download</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20Real%20Example%20of%20the%20Economics%20of%20Business%2C...%3A%20The%20Complete%20Guide.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/business-tee.html"><div class="ph">Business Tee</div></a>
+  <div class="body">
+    <div class="kind">tshirt · Business</div>
+    <h3><a href="p/business-tee.html" style="text-decoration:none">Business Tee</a></h3>
+    <p class="blurb">Printed and shipped on demand. No stock, no waiting on a batch.</p>
+    <div class="row">
+      <div class="price">$19.00
+        <small>printed on demand</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20Business%20Tee.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/one-usable-idea-about-education-systems-audio-edition.html"><div class="ph">One Usable Idea About Education Systems — Audio Edition</div></a>
+  <div class="body">
+    <div class="kind">audio pack · Education</div>
+    <h3><a href="p/one-usable-idea-about-education-systems-audio-edition.html" style="text-decoration:none">One Usable Idea About Education Systems — Audio Edition</a></h3>
+    <p class="blurb">The narrated edition, for the commute and the gym.</p>
+    <div class="row">
+      <div class="price">$9.00
+        <small>instant download</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20One%20Usable%20Idea%20About%20Education%20Systems%20%E2%80%94%20Audio%20Edition.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/one-usable-idea-about-education-systems-workbook.html"><div class="ph">One Usable Idea About Education Systems Workbook</div></a>
+  <div class="body">
+    <div class="kind">workbook · Education</div>
+    <h3><a href="p/one-usable-idea-about-education-systems-workbook.html" style="text-decoration:none">One Usable Idea About Education Systems Workbook</a></h3>
+    <p class="blurb">A printable worksheet that turns the method into something you actually do this week.</p>
+    <div class="row">
+      <div class="price">$9.99
+        <small>instant download</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20One%20Usable%20Idea%20About%20Education%20Systems%20Workbook.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/education-print-set.html"><div class="ph">Education Print Set</div></a>
+  <div class="body">
+    <div class="kind">wall art · Education</div>
+    <h3><a href="p/education-print-set.html" style="text-decoration:none">Education Print Set</a></h3>
+    <p class="blurb">High-resolution printables at standard frame sizes. Download, print, frame.</p>
+    <div class="row">
+      <div class="price">$8.99
+        <small>instant download</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20Education%20Print%20Set.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/christian-content-sticker-pack.html"><div class="ph">Christian content Sticker Pack</div></a>
+  <div class="body">
+    <div class="kind">sticker · Christian content</div>
+    <h3><a href="p/christian-content-sticker-pack.html" style="text-decoration:none">Christian content Sticker Pack</a></h3>
+    <p class="blurb">A small pack for the laptop, the notebook and the water bottle.</p>
+    <div class="row">
+      <div class="price">$6.99
+        <small>printed on demand</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20Christian%20content%20Sticker%20Pack.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/education-consulting-session.html"><div class="ph">Education Consulting Session</div></a>
+  <div class="body">
+    <div class="kind">consulting · Education</div>
+    <h3><a href="p/education-consulting-session.html" style="text-decoration:none">Education Consulting Session</a></h3>
+    <p class="blurb">One session on one specific problem, with a written summary you can act on.</p>
+    <div class="row">
+      <div class="price">$179.00
+        <small>instant download</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20Education%20Consulting%20Session.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/biggest-myth-about-christian-content-back-workbook.html"><div class="ph">Biggest Myth About Christian Content: Back... Workbook</div></a>
+  <div class="body">
+    <div class="kind">workbook · Christian content</div>
+    <h3><a href="p/biggest-myth-about-christian-content-back-workbook.html" style="text-decoration:none">Biggest Myth About Christian Content: Back... Workbook</a></h3>
+    <p class="blurb">A printable worksheet that turns the method into something you actually do this week.</p>
+    <div class="row">
+      <div class="price">$9.99
+        <small>instant download</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20Biggest%20Myth%20About%20Christian%20Content%3A%20Back...%20Workbook.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/christian-content-print-set.html"><div class="ph">Christian content Print Set</div></a>
+  <div class="body">
+    <div class="kind">wall art · Christian content</div>
+    <h3><a href="p/christian-content-print-set.html" style="text-decoration:none">Christian content Print Set</a></h3>
+    <p class="blurb">High-resolution printables at standard frame sizes. Download, print, frame.</p>
+    <div class="row">
+      <div class="price">$8.99
+        <small>instant download</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20Christian%20content%20Print%20Set.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/christian-content-tee.html"><div class="ph">Christian content Tee</div></a>
+  <div class="body">
+    <div class="kind">tshirt · Christian content</div>
+    <h3><a href="p/christian-content-tee.html" style="text-decoration:none">Christian content Tee</a></h3>
+    <p class="blurb">Printed and shipped on demand. No stock, no waiting on a batch.</p>
+    <div class="row">
+      <div class="price">$19.00
+        <small>printed on demand</small>
+      </div>
+      <a class="btn" href="https://wa.me/256753717508?text=Hi%20Hasahya%20Motivated%21%20I%27d%20like%20to%20buy%3A%20Christian%20content%20Tee.%20Please%20send%20your%20Mobile%20Money%20details.">Buy</a>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/the-business-circle.html"><div class="ph">The Business Circle</div></a>
+  <div class="body">
+    <div class="kind">membership · Business</div>
+    <h3><a href="p/the-business-circle.html" style="text-decoration:none">The Business Circle</a></h3>
+    <p class="blurb">Early access, the members-only monthly piece, and a direct line to me.</p>
+    <div class="row">
+      <div class="price">$9.00
+        <small>instant download</small>
+      </div>
+      <span class="btn soon">Coming soon</span>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/the-education-circle.html"><div class="ph">The Education Circle</div></a>
+  <div class="body">
+    <div class="kind">membership · Education</div>
+    <h3><a href="p/the-education-circle.html" style="text-decoration:none">The Education Circle</a></h3>
+    <p class="blurb">Early access, the members-only monthly piece, and a direct line to me.</p>
+    <div class="row">
+      <div class="price">$9.00
+        <small>instant download</small>
+      </div>
+      <span class="btn soon">Coming soon</span>
+    </div>
+  </div>
+</article>
+<article class="card">
+  <a class="shot" href="p/the-christian-content-circle.html"><div class="ph">The Christian content Circle</div></a>
+  <div class="body">
+    <div class="kind">membership · Christian content</div>
+    <h3><a href="p/the-christian-content-circle.html" style="text-decoration:none">The Christian content Circle</a></h3>
+    <p class="blurb">Early access, the members-only monthly piece, and a direct line to me.</p>
+    <div class="row">
+      <div class="price">$9.00
+        <small>instant download</small>
+      </div>
+      <span class="btn soon">Coming soon</span>
+    </div>
+  </div>
+</article>
+</div>
+<h2 class="section" id="how">How delivery works</h2>
+<p class="section-note">No surprises at checkout.</p>
+<ul class="plain">
+<li><strong>Digital items</strong> arrive as an immediate download after payment. No waiting, no shipping.</li>
+<li><strong>Printed items</strong> are made and shipped when you order them. Nothing is held in stock, so allow for production time on top of delivery.</li>
+<li><strong>Refunds</strong> — if a digital item is not what the page described, say so and it is refunded.</li>
+</ul>
+</main>
+<footer><div class="wrap">
+  <p>Hasahya Motivated · All text, artwork and narration original.</p>
+  <p>Generated 2026-08-15. Prices in USD.</p>
+  <p>Built with Bryson<span style="color:#e11d2e">.</span>Studio &middot; &copy; 2026. Coded with love by Hasahya Brian, +256753517508.</p>
+</div></footer>
+<button class="themebtn">Theme</button>
+<script>
+document.querySelector('.themebtn').addEventListener('click', () => {
+  const r = document.documentElement;
+  const dark = r.getAttribute('data-theme') === 'dark' ||
+    (!r.hasAttribute('data-theme') &&
+     matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+</script>
+</body>
+</html>
