@@ -28,7 +28,7 @@ Every product has a **Buy / Book on WhatsApp** button. It opens a chat with the 
 pre-filled, you pay by **MTN or Airtel Mobile Money**, and the file or booking is sent
 straight to you.
 
-> 📩 **Order or ask anything on WhatsApp:** [+256 753 717508](https://wa.me/256753717508)
+> 📩 **Order or ask anything on WhatsApp:** [+256 753 517508](https://wa.me/256753517508)
 
 ## 👤 About
 
@@ -37,7 +37,7 @@ IT professional based in Uganda, helping real businesses run their books properl
 sharing practical tech and honest encouragement. The line is simple: *the message is hope.*
 
 - ▶️ YouTube: **[@HasahyaBrian](https://www.youtube.com/@HasahyaBrian)**
-- 💬 WhatsApp: **+256 753 717508**
+- 💬 WhatsApp: **+256 753 517508**
 
 ## ⚙️ About this site
 
@@ -47,4 +47,4 @@ buyer and seller over WhatsApp Mobile Money; no card data is collected here.
 
 ---
 
-<p align="center">© 2026 Hasahya Motivated · Coded with love by Hasahya Brian · +256 753 717508</p>
+<p align="center">© 2026 Hasahya Motivated · Coded with love by Hasahya Brian · +256 753 517508</p>
