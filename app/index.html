@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head><link rel="icon" href="/hasahya-motivated-store/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/hasahya-motivated-store/favicon-32.png"><link rel="icon" type="image/png" sizes="192x192" href="/hasahya-motivated-store/icon-192.png"><link rel="apple-touch-icon" href="/hasahya-motivated-store/apple-touch-icon.png"><meta property="og:image" content="https://brightbrio.github.io/hasahya-motivated-store/favicon-512.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hasahya Motivated — the app</title>
+<meta name="description" content="Hasahya Motivated is a Christian devotional and motivation media channel. This page explains the software that publishes its own videos to YouTube, Facebook and TikTok.">
+<style>
+:root{--page:#f7f7f4;--card:#fff;--ink:#14161c;--muted:#5b616e;--line:#e3e3dd;--brand:#F5C518;--deep:#1B1F2A}
+@media(prefers-color-scheme:dark){:root{--page:#0e0f13;--card:#171920;--ink:#f4f5f7;--muted:#8a8f9c;--line:#262933}}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit}.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+header.hero{background:var(--deep);color:#fff;padding:56px 0 44px;border-bottom:5px solid var(--brand)}
+header .k{font:700 12px/1 system-ui;letter-spacing:.2em;text-transform:uppercase;color:var(--brand)}
+header h1{margin:14px 0 6px;font-size:clamp(1.8rem,5vw,2.6rem);letter-spacing:-.02em}
+header p{margin:0;color:#d5d8e0;max-width:44em}
+main{padding:34px 0 64px}
+h2{font-size:1.25rem;margin:34px 0 8px;letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:14px 0}
+.card h3{margin:0 0 6px;font-size:1rem}
+.card p{margin:0;color:var(--muted);font-size:.94rem}
+.links{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px}
+.links a{font-weight:700;text-decoration:underline}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:24px 0;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <div class="k">Hasahya Motivated</div>
+  <h1>A Christian devotional &amp; motivation media channel — and the software behind it.</h1>
+  <p>Hasahya Motivated makes short devotional videos, Bible stories and encouragement content, published daily to YouTube, Facebook and TikTok. This page describes the publishing software itself, for anyone reviewing its platform-API access.</p>
+</div></header>
+<main class="wrap">
+
+  <h2>What this app is</h2>
+  <p>A small, self-operated publishing tool, built and run by the same person who makes the videos. It takes a finished video <strong>we</strong> have already produced — narration, captions, our own channel branding — and uploads it to <strong>our own</strong> connected accounts on YouTube, Facebook and TikTok. It is not a public product, a third-party scheduler for other creators, or anything that handles anyone else's content.</p>
+
+  <h2>Why it needs each TikTok permission</h2>
+  <div class="card">
+    <h3>video.upload / video.publish</h3>
+    <p>To upload the devotional videos this channel produces to the connected TikTok account's own inbox. Nothing is posted without the account holder's own final tap to publish inside the TikTok app.</p>
+  </div>
+  <div class="card">
+    <h3>user.info.basic</h3>
+    <p>Only to confirm which TikTok account the upload is going to (so a video is never sent to the wrong account) — not to read followers, messages, or any other personal data.</p>
+  </div>
+
+  <h2>Who runs it</h2>
+  <p>Hasahya Motivated, Uganda. One person, one channel, one set of accounts. Contact: <a href="mailto:brightbrio@gmail.com">brightbrio@gmail.com</a> or WhatsApp <a href="https://wa.me/256753517508">+256 753 517508</a>.</p>
+
+  <div class="links">
+    <a href="../privacy-policy/">Privacy Policy</a>
+    <a href="../terms-of-service/">Terms of Service</a>
+    <a href="../">Hasahya Motivated — Store</a>
+  </div>
+
+  <footer>Hasahya Motivated — the message is hope.</footer>
+</main>
+</body>
+</html>
